@@ -2,7 +2,7 @@
 /**
  * Create and register a custom post type
  */
-class BIMGTestimonial {
+class KOCHTestimonial {
     public function __construct()
     {
         add_action( 'init', array( $this, 'create_testimonial_post_type' ) );
@@ -76,7 +76,7 @@ class BIMGTestimonial {
             // 'can_export' => true, // boolean, Default: true
         );
 
-        register_post_type( 'bimg_testimonial', $args );
+        register_post_type( 'koch_testimonial', $args );
     }
 }
 

@@ -37,5 +37,5 @@ foreach ( glob( plugin_dir_path( __FILE__ ) . 'taxonomies/*.php' ) as $file ) {
 //$bimg_example = new BIMGExample;
 //$bimg_example_taxonomy = new BIMGExampleTaxonomy;
 
-//$bimg_testimonials = new BIMGTestimonial;
+$bimg_testimonials = new KOCHTestimonial;
 
