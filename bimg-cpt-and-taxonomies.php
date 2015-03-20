@@ -28,11 +28,14 @@ foreach ( glob( plugin_dir_path( __FILE__ ) . 'post_types/*.php' ) as $file ) {
     include_once $file;
 }
 
+
 foreach ( glob( plugin_dir_path( __FILE__ ) . 'taxonomies/*.php' ) as $file ) {
     include_once $file;
 }
 
 // Example Post Type & Taxonomy
-$bimg_example = new BIMGExample;
-$bimg_example_taxonomy = new BIMGExampleTaxonomy;
+//$bimg_example = new BIMGExample;
+//$bimg_example_taxonomy = new BIMGExampleTaxonomy;
+
+//$bimg_testimonials = new BIMGTestimonial;
 
