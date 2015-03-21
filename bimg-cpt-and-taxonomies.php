@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: BIMG Post Types & Taxonomies 
+ * Plugin Name: BIMG Post Types & Taxonomies
  * Plugin URI: https://github.com/BigIdeaMediaGroup/bimg-cpt-and-taxonomies
  * Description: Framework for quickly adding new CPTs and Taxonomies to Wordpress sites.
- * Version: 0.1.0 
+ * Version: 0.1.0
  * Author: Big Idea Media Group
  * Author URI: https://github.com/BigIdeaMediaGroup
  * License: GPL2
@@ -34,9 +34,8 @@ foreach ( glob( plugin_dir_path( __FILE__ ) . 'taxonomies/*.php' ) as $file ) {
 }
 
 // Example Post Type & Taxonomy
-//$bimg_example = new BIMGExample;
-//$bimg_example_taxonomy = new BIMGExampleTaxonomy;
+$bimg_example = new BIMGExample;
+$bimg_example_taxonomy = new BIMGExampleTaxonomy;
 
 $koch_testimonials = new KOCHTestimonial;
 $koch_press = new KOCHpress;
-
