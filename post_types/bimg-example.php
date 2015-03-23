@@ -1,8 +1,13 @@
 <?php
 /**
  * Create and register a custom post type
+ *
+ * To create a new post type, copy and rename this file. Edit the SINGULAR and
+ * PLURAL constants, and the $labels, $supports, $rewrite, and $args arrays as
+ * needed.
  */
-class BIMGExample {
+class BIMGExample
+{
     const SINGULAR = 'Example';
     const PLURAL = 'Examples';
 
@@ -17,6 +22,7 @@ class BIMGExample {
      * Reference: http://codex.wordpress.org/Function_Reference/register_post_type
      */
     public function create_example_post_type() {
+
         $labels = array(
             'name' => self::PLURAL,
             'singular_name' => self::SINGULAR,
@@ -49,7 +55,7 @@ class BIMGExample {
         );
 
         $rewrite = array(
-            'slug' => strtolower( self::PLURAL ), // Defaults to $post_type
+            'slug' => str_replace( ' ', '-', strtolower ( self::PLURAL ) ), // Defaults to $post_type
             // 'with_front' => true, // Default: true
             // 'feeds' => false, // Defaults to 'has_archive' value
             // 'pages' => true, // Default: true
@@ -79,6 +85,6 @@ class BIMGExample {
             // 'can_export' => true, // boolean, Default: true
         );
 
-        register_post_type( 'koch_' . strtolower( self::SINGULAR ), $args );
+        register_post_type( 'koch_' . str_replace( ' ', '_', strtolower ( self::SINGULAR ) ), $args );
     }
 }
