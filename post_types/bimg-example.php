@@ -1,8 +1,16 @@
 <?php
 /**
  * Create and register a custom post type
+ *
+ * To create a new post type, copy and rename this file. Edit the SINGULAR and
+ * PLURAL constants, and the $labels, $supports, $rewrite, and $args arrays as
+ * needed.
  */
-class BIMGExample {
+class BIMGExample
+{
+    const SINGULAR = 'Example';
+    const PLURAL = 'Examples';
+
     public function __construct()
     {
         add_action( 'init', array( $this, 'create_example_post_type' ) );
@@ -14,21 +22,22 @@ class BIMGExample {
      * Reference: http://codex.wordpress.org/Function_Reference/register_post_type
      */
     public function create_example_post_type() {
+
         $labels = array(
-            'name' => 'Examples',
-            'singular_name' => 'Example',
+            'name' => self::PLURAL,
+            'singular_name' => self::SINGULAR,
             // 'menu_name' => '', // Defaults to the value of 'name'
             // 'name_admin_bar => '', // Defaults to the value of 'singular_name'
-            'all_items' => 'All Examples', // Defaults to the value of 'name'
+            'all_items' => 'All ' . self::PLURAL, // Defaults to the value of 'name'
             // 'add_new' => '', // Default: 'Add New'
-            'add_new_item' => 'Add New Example', // Default: 'Add New Post/Page'
-            'edit_item' => 'Edit Example', // Default: 'Edit Post/Page'
-            'new_item' => 'New Example', // Default: 'New Post/Page'
-            'view_item' => 'View Example', // Default: 'View Post/Page'
-            'search_items' => 'Search Examples', // Default: 'Search Posts/Pages'
-            'not_found' => 'No example found', // Default: 'No posts/pages found'
-            'not_found_in_trash' => 'No examples found in Trash', // Default: 'No posts/pages found in Trash.'
-            // 'parent_item_colon' => '', // Only for Hierarchical post types! Default: 'Parent Page'
+            'add_new_item' => 'Add New ' . self::SINGULAR, // Default: 'Add New Post/Page'
+            'edit_item' => 'Edit ' . self::SINGULAR, // Default: 'Edit Post/Page'
+            'new_item' => 'New ' . self::SINGULAR, // Default: 'New Post/Page'
+            'view_item' => 'View ' . self::SINGULAR, // Default: 'View Post/Page'
+            'search_items' => 'Search ' . self::PLURAL, // Default: 'Search Posts/Pages'
+            'not_found' => 'No ' . strtolower( self::SINGULAR ) . ' found', // Default: 'No posts/pages found'
+            'not_found_in_trash' => 'No ' . strtolower( self::PLURAL ) . ' found in Trash', // Default: 'No posts/pages found in Trash.'
+            // 'parent_item_colon' => '', // Only for Hierarchical post types! Default: 'Parent Page:'
         );
 
         $supports = array(
@@ -46,7 +55,7 @@ class BIMGExample {
         );
 
         $rewrite = array(
-            'slug' => 'examples', // Defaults to $post_type
+            'slug' => str_replace( ' ', '-', strtolower ( self::PLURAL ) ), // Defaults to $post_type
             // 'with_front' => true, // Default: true
             // 'feeds' => false, // Defaults to 'has_archive' value
             // 'pages' => true, // Default: true
@@ -76,7 +85,6 @@ class BIMGExample {
             // 'can_export' => true, // boolean, Default: true
         );
 
-        register_post_type( 'example', $args );
+        register_post_type( 'bimg_' . str_replace( ' ', '_', strtolower ( self::SINGULAR ) ), $args );
     }
 }
-
